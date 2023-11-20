@@ -46,6 +46,8 @@ resource "aws_elasticache_replication_group" "main" {
   at_rest_encryption_enabled  = true
   transit_encryption_enabled  = true
   kms_key_id                  = var.kms_key_id
+  engine                      = "redis"
+  engine_version              = "6.2"
 }
 
 
