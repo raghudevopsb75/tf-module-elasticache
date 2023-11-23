@@ -57,7 +57,7 @@ resource "aws_elasticache_replication_group" "main" {
 
 resource "aws_elasticache_cluster" "main" {
   cluster_id           = "${var.env}-${var.component}"
-  engine               = var.ec_node_type
+  engine               = "redis"
   node_type            = var.ec_node_type
   num_cache_nodes      = var.ec_node_count
   parameter_group_name = aws_elasticache_parameter_group.main.name
