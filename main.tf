@@ -43,7 +43,7 @@ resource "aws_elasticache_replication_group" "main" {
   description                = "${var.env}-${var.component}"
   node_type                  = var.ec_node_type
   num_cache_clusters         = var.ec_node_count
-  parameter_group_name       = "default.redis6.x.cluster.on"
+  parameter_group_name       = aws_elasticache_parameter_group.main.name
   port                       = 6379
   subnet_group_name          = aws_elasticache_subnet_group.main.name
   security_group_ids         = [aws_security_group.main.id]
