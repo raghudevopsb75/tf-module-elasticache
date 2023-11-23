@@ -55,3 +55,14 @@ resource "aws_elasticache_replication_group" "main" {
 }
 
 
+resource "aws_elasticache_cluster" "main" {
+  cluster_id           = "${var.env}-${var.component}"
+  engine               = var.ec_node_type
+  node_type            = var.ec_node_type
+  num_cache_nodes      = var.ec_node_count
+  parameter_group_name = aws_elasticache_parameter_group.main.name
+  engine_version       = "6.2"
+  port                 = 6379
+  security_group_ids   = [aws_security_group.main.id]
+  subnet_group_name    = aws_elasticache_subnet_group.main.name
+}
